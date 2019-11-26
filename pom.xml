@@ -26,19 +26,19 @@
 		</developer>
 	</developers>
 
-	<scm>
-		<connection>scm:git:https://github.com/AgNO3/jcifs-ng.git</connection>
-		<developerConnection>scm:git:git@github.com:AgNO3/jcifs-ng.git</developerConnection>
-		<url>git@github.com:AgNO3/jcifs-ng.git</url>
-		<tag>HEAD</tag>
-	</scm>
+    <scm>
+        <connection>scm:git:git@github.com:seeburger-ag/jcifs-ng.git</connection>
+        <developerConnection>scm:git:git@github.com:seeburger-ag/jcifs-ng.git</developerConnection>
+        <tag>HEAD</tag>
+    </scm>
 
-	<distributionManagement>
-		<snapshotRepository>
-			<id>ossrh</id>
-			<url>https://oss.sonatype.org/content/repositories/snapshots</url>
-		</snapshotRepository>
-	</distributionManagement>
+    <distributionManagement>
+        <repository>
+            <id>${release.repository.id}</id>
+            <name>ops4j Release Distribution Repository</name>
+            <url>${release.repository.url}</url>
+        </repository>
+    </distributionManagement>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -58,24 +58,24 @@
 			<version>3.1.0</version>
 			<scope>provided</scope>
 		</dependency>
-		 
+
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-api</artifactId>
 			<version>1.7.24</version>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-log4j12</artifactId>
 			<version>1.7.24</version>
 			<scope>test</scope>
 		</dependency>
-		 
+
 		<dependency>
 			<groupId>org.bouncycastle</groupId>
 			<artifactId>bcprov-jdk15on</artifactId>
-			<version>1.66</version>
+			<version>1.68</version>
 		</dependency>
 
 		<dependency>
@@ -171,7 +171,7 @@
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>clirr-maven-plugin</artifactId>
-				<executions> 
+				<executions>
 					<execution>
 						<id>check-compatibility</id>
 						<goals>
@@ -182,7 +182,7 @@
 				<configuration>
 					<ignored>
 						<difference>
-							<!-- seems to be a clirr bug that it cannot handle the different inherited 
+							<!-- seems to be a clirr bug that it cannot handle the different inherited
 								return types -->
 							<className>**</className>
 							<differenceType>7006</differenceType>
@@ -287,7 +287,8 @@
 					</licenseFamilies>
 				</configuration>
 			</plugin>
-			<plugin>
+<!--
+            <plugin>
 				<groupId>org.sonatype.plugins</groupId>
 				<artifactId>nexus-staging-maven-plugin</artifactId>
 				<extensions>true</extensions>
@@ -297,6 +298,7 @@
 					<autoReleaseAfterClose>false</autoReleaseAfterClose>
 				</configuration>
 			</plugin>
+-->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-release-plugin</artifactId>
@@ -308,6 +310,7 @@
 				</configuration>
 			</plugin>
 
+<!--
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-gpg-plugin</artifactId>
@@ -321,7 +324,7 @@
 					</execution>
 				</executions>
 			</plugin>
-
+ -->
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>build-helper-maven-plugin</artifactId>
@@ -336,6 +339,7 @@
 				</executions>
 			</plugin>
 
+<!--
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>animal-sniffer-maven-plugin</artifactId>
@@ -352,9 +356,10 @@
 						<groupId>org.codehaus.mojo.signature</groupId>
 						<artifactId>java17</artifactId>
 						<version>1.0</version>
-					</signature>	
+					</signature>
 				</configuration>
 			</plugin>
+-->
 		</plugins>
 		<pluginManagement>
 			<plugins>
